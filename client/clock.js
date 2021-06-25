@@ -1,17 +1,21 @@
+import { Meteor } from "meteor/meteor";
+import { Template } from "meteor/templating";
+import { Session } from "meteor/session";
+
 Meteor.setInterval(function () {
   Session.set('time', new Date());
 }, 1000);
 
 Template.body.helpers({
 
-  hours: _.range(0, 12),
+  hours: Array.from({length: 12}, (_, i) => i + 1),
 
   degrees: function () {
     return 30 * this;
   },
 
   handData: function () {
-    var time = Session.get('time') || new Date();
+    let time = Session.get('time') || new Date();
     return { hourDegrees: time.getHours() * 30,
              minuteDegrees: time.getMinutes() * 6,
              secondDegrees: time.getSeconds() * 6 };
@@ -20,8 +24,8 @@ Template.body.helpers({
   radial: function (angleDegrees,
                     startFraction,
                     endFraction) {
-    var r = 100;
-    var radians = (angleDegrees-90) / 180 * Math.PI;
+    const r = 100;
+    const radians = (angleDegrees-90) / 180 * Math.PI;
 
     return {
       x1: r * startFraction * Math.cos(radians),

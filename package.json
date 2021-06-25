@@ -1,0 +1,13 @@
+{
+  "name": "clock",
+  "version": "1.0.0",
+  "description": "Meteor clock example",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/meteor/clock"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.14.6",
+    "meteor-node-stubs": "^1.0.3"
+  }
+}
